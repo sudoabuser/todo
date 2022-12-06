@@ -14,7 +14,10 @@ Feature: todo list
         Given there is just one green note added
         When john wick hovered the note, clicked delete and accepted the dialog
         Then john wick should see no notes yet warning
-        
-# Scenario: Listing not with same colors
+
+    Scenario: Listing notes with same colors
+        Given there are 2 purple 1 green notes
+        When john wick sorts purple notes
+        Then john wick should see only 2 purple notes
 
 # Scenario: Listing all the colors

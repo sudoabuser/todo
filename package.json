@@ -11,6 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "@cucumber/cucumber": "^8.9.0",
+    "jquery": "^3.6.1",
+    "jsdom": "^20.0.3",
     "puppeteer": "^19.3.0"
   }
 }
