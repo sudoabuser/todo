@@ -1,14 +1,19 @@
-// const puppeteer = require('puppeteer')
-// const assert = require('assert')
+const puppeteer = require('puppeteer')
+const assert = require('assert')
 
 
 
-// async function main() {
-//     const browser = await puppeteer.launch({ headless: false });
-//     const page = await browser.newPage();
-//     await page.goto('https://vue3-note.netlify.app/');
+async function main() {
+    const browser = await puppeteer.launch({ headless: false });
+    const page = await browser.newPage();
+    await page.goto('https://vue3-note.netlify.app/');
 
 
+    const noNotesYetSel = await page.$("body > div > main > div.flex-col > p")
+    let noNotesYetText = await page.evaluate(el => el.textContent, noNotesYetSel)
+    console.log(noNotesYetText);
+    await browser.close()
+    
 //     // add note
 //     await page.type("#app > main > form > input", "homework");
 //     await page.type("#app > main > form > textarea", "do your math homework");
@@ -16,7 +21,7 @@
 //     await page.click("#app > main > form > div > button");
 
 
-//     // delete note 
+//     // // delete note 
 //     page.on('dialog', async dialog => {
 //         console.log(dialog.message());
 //         await dialog.accept();
@@ -37,6 +42,6 @@
 //     console.log(text);
 //     await page.waitForTimeout(1000);
 //     await browser.close();
-// }
+}
 
-// main();
+main();
