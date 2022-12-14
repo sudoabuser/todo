@@ -1,18 +1,18 @@
 const puppeteer = require('puppeteer')
 const assert = require('assert')
-const { JSDOM } = require( "jsdom" );
-const { window } = new JSDOM( "" );
-const $ = require( "jquery" )( window );
-
+const { JSDOM } = require("jsdom");
+const { window } = new JSDOM("");
+const $ = require("jquery")(window);
 
 async function main() {
     const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
     await page.goto('https://vue3-note.netlify.app/');
+    var divCount = await page.$$('#app > main > m-2.grid.grid-cols-1 div')
+    console.log(divCount.length)
 
-    var count = await $('#app div').length;
-    console.log(count)
 
+    // await window.find("No notes yet")
     // const noNotesYetSel = await page.$("body > div > main > div.flex-col > p")
     // let noNotesYetText = await page.evaluate(el => el.textContent, noNotesYetSel)
     // console.log(noNotesYetText);
